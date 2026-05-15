@@ -62,3 +62,20 @@ lam_eff = completed_customers / total_time    # effective arrival rate
 ns = lam_eff * ts                              # Little's Law
 nq = lam_eff * tq                              # Little's Law
 ```
+
+## Example Run
+
+```
+Inputs: k=3, c=1, λ=5, μ=2, time=10
+(High arrival rate vs service rate causes rejections)
+
+Output:
+  total customers arrived : 58
+  total rejected          : 41
+  total served            : 14
+
+  ts (avg time in system) : 1.6416
+  tq (avg time in queue)  : 0.9481
+  ns (avg number in system): 2.3671
+  nq (avg number in queue) : 1.3671
+```
