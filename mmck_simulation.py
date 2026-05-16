@@ -45,9 +45,21 @@ def get_inputs():
         except ValueError:
             print("  error: mu must be a number")
 
-    return k, c, lam, mu
+    
+    while True:
+        try:
+            sim_time = float(input("enter simulation time: "))
+            if sim_time <= 0:
+                print("error: simulation time must be > 0")
+                continue
+            break
+        except ValueError:
+            print("  error: mu must be a number")
+    
 
-def run_simulation(k, c, lam, mu, sim_time=50):
+    return k, c, lam, mu, sim_time
+
+def run_simulation(k, c, lam, mu, sim_time=50.0):
     clock = 0
     queue = []
     servers = [None] * c  # each slot is None or (customer_id, service_end_time)
@@ -140,8 +152,7 @@ def calc_metrics(arrival_times, service_start_times, departure_times):
     return ts, tq, ns, nq
 
 def main():
-    k, c, lam, mu = get_inputs()
-    sim_time = float(input("enter simulation time: "))
+    k, c, lam, mu, sim_time = get_inputs()
     print("\nstarting simulation...\n")
     time.sleep(0.5)
 
